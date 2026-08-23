@@ -1,10 +1,6 @@
 package edu.usfca.cs272.lectures.basics.euler;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.Arrays;
 
 /**
  * Project Euler Problem 1 is stated as follows:
@@ -21,57 +17,25 @@ import java.util.TreeSet;
  * @version Fall 2026
  */
 public class Problem1d {
-	/**
-	 * Returns all multiples of a value less than a maximum.
-	 *
-	 * @param value multiple to calculate
-	 * @param max   maximum value
-	 *
-	 * @return multiples of {@code value} less than {@code max}
-	 */
-	public static Set<Integer> getMultiples(int value, int max) {
-		Set<Integer> multiples = new TreeSet<>();
-		addMultiples(value, max, multiples);
-		return multiples;
-	}
 
 	/**
-	 * Adds all multiples of a value less than a maximum to the provided set of
-	 * multiples. (This is an example of a method with a side-effect.)
+	 * Sums together non-negative multiples less than the maximum value.
 	 *
-	 * @param value     multiple to calculate
-	 * @param max       maximum value
-	 * @param multiples set to add multiples of {@code value} less than {@code max}
-	 */
-	public static void addMultiples(int value, int max, Set<Integer> multiples) {
-		for (int i = value; i < max; i += value) {
-			multiples.add(i);
-		}
-	}
-
-	/**
-	 * Sums all multiples of the values, up until the maximum value specified. Takes
-	 * into account numbers that may be multiples of several values. For example, 15
-	 * is a multiple of 3 and 5.
+	 * @param max       maximum value to consider
+	 * @param multiples the multiples to consider (such as 3 and 5)
 	 *
-	 * @param values multiples to calculate
-	 * @param max    maximum value
-	 * @return multiples of {@code values} less than {@code max}
+	 * @return sum of multiples less than the maximum value
 	 */
-	public static int sumMultiples(Collection<Integer> values, int max) {
-		Set<Integer> multiples = new TreeSet<>();
-
-		// add multiples to set to avoid duplicates
-		for (int value : values) {
-			// multiples.addAll(getMultiples(value, max));
-			addMultiples(value, max, multiples);
-		}
-
-		// loop through unique values and add together
+	public static int sumMultiples(int max, int[] multiples) {
 		int sum = 0;
 
-		for (int value : multiples) {
-			sum += value;
+		for (int i = 0; i < max; i++) {
+			for (int multiple : multiples) {
+				if (i % multiple == 0) {
+					sum += i;
+					break;
+				}
+			}
 		}
 
 		return sum;
@@ -79,42 +43,25 @@ public class Problem1d {
 
 	/**
 	 * Prints the sum of multiples less than a maximum value to the console. All
-	 * values must be provided via command-line parameters.
+	 * values are hard-coded.
 	 *
-	 * @param args the first value specifies the maximum and all following values
-	 *             specify the multiples
+	 * @param args unused
 	 */
 	public static void main(String[] args) {
-		int max = 0;
-		List<Integer> values = new ArrayList<>();
+		int max = 1000;
+		int[] original = { 3, 5 };
+		int[] only10 = { 10 };
+		int[] primes = { 11, 23, 37 };
 
-		try {
-			max = Integer.parseInt(args[0]);
+		String format = "The sum of multiples %s below %d is %d.%n";
 
-			if (max < 0) {
-				throw new NumberFormatException("Integer value must be non-negative.");
-			}
+		System.out.printf(format, Arrays.toString(original), max, Problem1b.sumMultiples(max));
+		System.out.printf(format, Arrays.toString(original), max, sumMultiples(max, original));
 
-			for (int i = 1; i < args.length; i++) {
-				int value = Integer.parseInt(args[i]);
+		System.out.println();
 
-				if (value < 0) {
-					throw new NumberFormatException("Integer value must be non-negative.");
-				}
-
-				values.add(value);
-			}
-
-			int result = sumMultiples(values, max);
-			String format = "The sum of multiples of %s less than %d is %d.";
-			System.out.printf(format, values.toString(), max, result);
-		}
-		catch (ArrayIndexOutOfBoundsException e) {
-			System.err.println("At least two values must be provided.");
-		}
-		catch (NumberFormatException e) {
-			System.err.println("All values must be non-negative integers.");
-		}
+		System.out.printf(format, Arrays.toString(only10), max, sumMultiples(max, only10));
+		System.out.printf(format, Arrays.toString(primes), max, sumMultiples(max, primes));
 	}
 
 	/*
