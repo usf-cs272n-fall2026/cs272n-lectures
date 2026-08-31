@@ -45,7 +45,7 @@ public class EliteFileConverter {
 		boolean random = Math.random() < 0.5;
 
 		// switch expressions are now possible! see:
-		// https://docs.oracle.com/en/java/javase/17/language/switch-expressions.html
+		// https://docs.oracle.com/en/java/javase/25/language/switch-expressions-statements.html
 		return switch (letter) {
 			// ternary (3-way) operator
 			// condition ? trueValue : falseValue
@@ -203,7 +203,7 @@ public class EliteFileConverter {
 	 */
 	public static void main(String[] args) throws IOException {
 		// multi-line strings are new in Java 15+
-		// see: https://docs.oracle.com/en/java/javase/17/language/text-blocks.html
+		// see: https://docs.oracle.com/en/java/javase/25/language/text-blocks.html
 		String text = """
 				Sally sells sea shells
 				at the sea shore.
