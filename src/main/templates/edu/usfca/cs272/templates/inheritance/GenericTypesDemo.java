@@ -1,53 +1,35 @@
 package edu.usfca.cs272.templates.inheritance;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class GenericTypesDemo {
-	public static void rawDemo() {
-		// TODO Fill in rawDemo()
-	}
-
-	public static void listDemo() {
-		// TODO Fill in listDemo()
-	}
-
-	public static void methodDemo() {
-		String a = "alfalfa";
-		String b = "bamboo";
-		// TODO Fill in methodDemo() part 1
-
-		List<String> words = List.of("ape", "bee", "cat", "dog", "eel", "fox");
-		// TODO Fill in methodDemo() part 2
-	}
-
 	// TODO Fill in chooseRandom methods
-
-	public static void comparableDemo() {
-		String a = "alfalfa";
-		String b = "bamboo";
-		// TODO Fill in comparableDemo()
-	}
 
 	// TODO Fill in chooseMax methods
 
-	public static void classDemo() {
-		// TODO Fill in classDemo()
-	}
-
 	// TODO Fill in Pair class
-
-	public static void wildcardDemo() {
-		// TODO Fill in wildcardDemo()
-	}
 
 	// TODO Fill in sumNumbers methods
 
 	public static void main(String[] args) {
-		rawDemo();
-//		listDemo();
-//		methodDemo();
-//		comparableDemo();
-//		classDemo();
-//		wildcardDemo();
+		ArrayList list = new ArrayList();
+		list.add("alfalfa");
+		list.add("bamboo");
+		list.add("cactus");
+
+//		list.add(Double.valueOf(3.14));
+
+//		String a = "alfalfa";
+//		String b = "bamboo";
+//		List<String> words = List.of("ape", "bee", "cat", "dog", "eel", "fox");
+//		Path path = Path.of(".").toAbsolutePath().normalize();
+
+//		List<Number> nums = new ArrayList<>();
+//		nums.add(Double.valueOf(3.14));
+//		nums.add(Integer.valueOf(42));
+
+//		List<Integer> ints = new ArrayList<>();
+//		ints.add(Integer.valueOf(1));
+//		ints.add(Integer.valueOf(2));
 	}
 }
