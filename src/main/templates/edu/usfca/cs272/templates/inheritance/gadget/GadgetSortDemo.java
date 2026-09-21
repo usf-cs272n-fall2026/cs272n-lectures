@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class GadgetSortDemo {
 	public static void printCollection(/* TODO Fill in params */) {
 		// for (Gadget gadget : gadgets) {
-		// System.out.printf("id: %2d name: %s\n", gadget.id, gadget.name);
+		// System.out.printf("id: %2d name: %s\n", gadget.id(), gadget.name());
 		// }
 	}
 
