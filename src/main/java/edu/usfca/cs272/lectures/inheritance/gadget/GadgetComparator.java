@@ -15,8 +15,8 @@ public class GadgetComparator implements Comparator<Gadget> {
 	 */
 	@Override
 	public int compare(Gadget one, Gadget two) {
-		int length1 = one.name.length();
-		int length2 = two.name.length();
+		int length1 = one.name().length();
+		int length2 = two.name().length();
 
 		// Use Integer.compare(length2, length1) to swap order.
 		return Integer.compare(length1, length2);

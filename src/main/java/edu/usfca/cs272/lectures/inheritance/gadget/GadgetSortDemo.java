@@ -24,7 +24,7 @@ public class GadgetSortDemo {
 	 */
 	public static void printCollection(Iterable<Gadget> gadgets) {
 		for (Gadget gadget : gadgets) {
-			System.out.printf("id: %2d name: %s\n", gadget.id, gadget.name);
+			System.out.printf("id: %2d name: %s\n", gadget.id(), gadget.name());
 		}
 	}
 
@@ -66,7 +66,7 @@ public class GadgetSortDemo {
 		Collections.sort(list, new Comparator<Gadget>() {
 			@Override
 			public int compare(Gadget w1, Gadget w2) {
-				return String.CASE_INSENSITIVE_ORDER.compare(w1.name, w2.name);
+				return String.CASE_INSENSITIVE_ORDER.compare(w1.name(), w2.name());
 			}
 		});
 		printCollection(list);
