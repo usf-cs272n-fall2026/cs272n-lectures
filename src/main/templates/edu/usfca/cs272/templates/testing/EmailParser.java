@@ -28,6 +28,12 @@ public class EmailParser {
 	/// The regular expression used to match email addresses.
 	private static final String EMAIL_REGEX = "(.+)@(.+)";
 
+	// "(.+)@(.+)"; // (fails because no group for tld)
+	// "(.+)@(.+(\\..*))"; // (fails because period in tld)
+	// "(.+)@(.+\\.(.*))"; // (fails no period in domain test)
+	// "(.+?)@(.+?(?:\\.([^.]+?))?)"; // (fails multiple @ symbols test)
+	// "([^@]+)@([^@]+?(?:\\.([^@.]+))?)"; // (passes these tests)
+
 	/// The pattern object used to represent the email regular expression.
 	private static final Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX);
 
