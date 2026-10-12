@@ -1,4 +1,4 @@
-package edu.usfca.cs272.lectures.threads;
+package edu.usfca.cs272.lectures.threads.basics;
 
 import java.util.Arrays;
 
