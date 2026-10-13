@@ -6,38 +6,34 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-/**
- * Illustrates how to use a generic type, basic synchronization, and the use of
- * {@link Thread#wait()} and {@link Thread#notifyAll()} to create a thread-safe
- * data structure. Uses the produce-consumer model to demo this data structure
- * with multiple threads.
- *
- * @see MirrorDriver
- * @see BoundedBuffer
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @version Fall 2026
- */
+/// Illustrates how to use a generic type, basic synchronization, and the use of
+/// [Thread#wait()] and [Thread#notifyAll()] to create a thread-safe data
+/// structure. Uses the produce-consumer model to demo this data structure with
+/// multiple threads.
+///
+/// @see MirrorDriver
+/// @see BoundedBuffer
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @version Fall 2026
 public class MirrorDriver {
-	/** The bounded buffer */
+	/// The bounded buffer
 	private final BoundedBuffer<String> buffer;
 
-	/** The producer thread placing items in the buffer */
+	/// The producer thread placing items in the buffer
 	private final ProducerThread producer;
 
-	/** The consumer thread removing items from the buffer */
+	/// The consumer thread removing items from the buffer
 	private final ConsumerThread consumer;
 
-	/** The logger to use */
+	/// The logger to use
 	private static final Logger logger = LogManager.getLogger();
 
-	/** The end-of-transmission text */
+	/// The end-of-transmission text
 	private static final String EXIT = "exit";
 
-	/**
-	 * Creates an empty bounded buffer, and starts the producer and consumer
-	 * threads.
-	 */
+	/// Creates an empty bounded buffer, and starts the producer and
+	/// consumer threads.
 	public MirrorDriver() {
 		buffer = new BoundedBuffer<String>(5);
 		producer = new ProducerThread();
@@ -47,18 +43,13 @@ public class MirrorDriver {
 		consumer.start();
 	}
 
-	/**
-	 * Produces elements by scanning the console for user input. When found,
-	 * splits the input into individual words and adds each word to the bounded
-	 * buffer.
-	 */
+	/// Produces elements by scanning the console for user input. When found, splits
+	/// the input into individual words and adds each word to the bounded buffer.
 	private class ProducerThread extends Thread {
-		/** The scanner to use for user input */
+		/// The scanner to use for user input
 		private final Scanner scanner;
 
-		/**
-		 * Initializes the producer thread.
-		 */
+		/// Initializes the producer thread.
 		public ProducerThread() {
 			super();
 			scanner = new Scanner(System.in);
@@ -90,14 +81,10 @@ public class MirrorDriver {
 		}
 	}
 
-	/**
-	 * Consumes elements from the bounded buffer, and outputs each element to the
-	 * console in reverse.
-	 */
+	/// Consumes elements from the bounded buffer, and outputs each element to the
+	/// console in reverse.
 	private class ConsumerThread extends Thread {
-		/**
-		 * Initializes the consumer thread.
-		 */
+		/// Initializes the consumer thread.
 		public ConsumerThread() {
 			super();
 		}
@@ -134,11 +121,9 @@ public class MirrorDriver {
 	// deer keep <--> reed peek
 	// racecar <--> racecar
 
-	/**
-	 * Demonstrates this class.
-	 *
-	 * @param args unused
-	 */
+	/// Demonstrates this class.
+	///
+	/// @param args unused
 	public static void main(String[] args) {
 		new MirrorDriver();
 	}
