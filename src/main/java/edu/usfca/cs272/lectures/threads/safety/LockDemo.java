@@ -43,12 +43,12 @@ public class LockDemo {
 		worker2 = new Worker(staticKey);
 
 		// TF TF TF TF
-//		worker1 = new Worker(SyncDemo.class);
-//		worker2 = new Worker(SyncDemo.class);
+//		worker1 = new Worker(LockDemo.class);
+//		worker2 = new Worker(LockDemo.class);
 
 		// TF TF TF TF
-//	worker1 = new Worker(SyncDemo.class);
-//	worker2 = new Worker(SyncDemo.Worker.class);
+//	worker1 = new Worker(LockDemo.class);
+//	worker2 = new Worker(LockDemo.Worker.class);
 
 		// TT FF TT FF
 //		worker1 = new Worker(instanceKey1);
