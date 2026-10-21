@@ -202,7 +202,7 @@ public class IndexedSetDemo {
 		double minimum2 = LongStream.of(timed2).min().getAsLong() / nanos;
 		double minimum3 = LongStream.of(timed3).min().getAsLong() / nanos;
 
-		String format = "%15s : %.5f min, %.5f avg seconds%n";
+		String format = "%25s : %.5f min, %.5f avg seconds%n";
 		System.out.printf(format, set1.getClass().getSimpleName(), minimum1, average1);
 		System.out.printf(format, set2.getClass().getSimpleName(), minimum2, average2);
 		System.out.printf(format, set3.getClass().getSimpleName(), minimum3, average3);
@@ -216,7 +216,7 @@ public class IndexedSetDemo {
 		double speed2 = minimum2 / minimum3;
 		double speed3 = minimum1 / minimum3;
 
-		format = "%-15s is %.4fx %s than %-12s%n";
+		format = "%25s is %.4fx %s than %-12s%n";
 		System.out.printf(format, set2.getClass().getSimpleName(), speed1,
 				minimum2 < minimum1 ? "faster" : "slower",
 				set1.getClass().getSimpleName());
