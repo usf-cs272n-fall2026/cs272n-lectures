@@ -5,8 +5,6 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.usfca.cs272.lectures.threads.locking.IndexedSet;
-
 public class SynchronizedIndexedSet<E> extends IndexedSet<E> {
 	public SynchronizedIndexedSet() {
 		// TODO

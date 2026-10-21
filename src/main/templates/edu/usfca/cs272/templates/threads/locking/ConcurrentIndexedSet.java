@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import edu.usfca.cs272.lectures.threads.locking.IndexedSet;
-
 public class ConcurrentIndexedSet<E> extends IndexedSet<E> {
 	private ReentrantReadWriteLock lock;
 
