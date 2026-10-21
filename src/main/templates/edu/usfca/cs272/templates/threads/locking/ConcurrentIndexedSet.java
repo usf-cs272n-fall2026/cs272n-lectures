@@ -6,39 +6,17 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import edu.usfca.cs272.lectures.threads.locking.IndexedSet;
 
-/**
- * A thread-safe version of {@link IndexedSet} using a read/write lock.
- *
- * @param <E> element type
- * @see IndexedSet
- * @see ReadWriteLock
- * @see ReentrantReadWriteLock
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @version Fall 2026
- */
 public class ConcurrentIndexedSet<E> extends IndexedSet<E> {
-	/** The lock object to use. */
 	private ReentrantReadWriteLock lock;
 
-	/**
-	 * Initializes an unsorted synchronized indexed set.
-	 */
 	public ConcurrentIndexedSet() {
 		this(false);
 	}
 
-	/**
-	 * Initializes a sorted or unsorted synchronized index set depending on the
-	 * parameter.
-	 *
-	 * @param sorted if true, will initialize a sorted set
-	 */
 	public ConcurrentIndexedSet(boolean sorted) {
 		super(sorted);
 		lock = new ReentrantReadWriteLock();
@@ -46,17 +24,8 @@ public class ConcurrentIndexedSet<E> extends IndexedSet<E> {
 
 	@Override
 	public boolean add(E element) {
-		// lock outside of try/catch (if this fails, don't enter the try/catch)
-		lock.writeLock().lock();
-
-		try {
-			// always call super in a try in case of runtime exceptions
-			return super.add(element);
-		}
-		finally {
-			// make sure the lock is always unlocked even if there is an exception
-			lock.writeLock().unlock();
-		}
+		// TODO
+		return false;
 	}
 
 	@Override
@@ -85,14 +54,8 @@ public class ConcurrentIndexedSet<E> extends IndexedSet<E> {
 
 	@Override
 	public int size() {
-		lock.readLock().lock();
-
-		try {
-			return super.size();
-		}
-		finally {
-			lock.readLock().unlock();
-		}
+		// TODO
+		return -1;
 	}
 
 	@Override
@@ -167,11 +130,6 @@ public class ConcurrentIndexedSet<E> extends IndexedSet<E> {
 		}
 	}
 
-	/**
-	 * Demonstrates this class.
-	 *
-	 * @param args unused
-	 */
 	public static void main(String[] args) {
 		Method[] singleMethods = IndexedSet.class.getDeclaredMethods();
 		Method[] threadMethods = ConcurrentIndexedSet.class.getDeclaredMethods();
