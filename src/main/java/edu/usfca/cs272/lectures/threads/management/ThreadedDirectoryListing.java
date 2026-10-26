@@ -187,7 +187,7 @@ public class ThreadedDirectoryListing {
 	/// @throws IOException from [SerialDirectoryListing#list(Path)]
 	/// @throws InterruptedException from [#list(Path)]
 	public static void main(String[] args) throws IOException, InterruptedException {
-		Configurator.setAllLevels("edu.usfca.cs272.SerialDirectoryListing", Level.OFF);
+		Configurator.setAllLevels(SerialDirectoryListing.log.getName(), Level.OFF);
 		Path path = Path.of("src");
 		Set<Path> actual = list(path);
 		Set<Path> expected = SerialDirectoryListing.list(path);
