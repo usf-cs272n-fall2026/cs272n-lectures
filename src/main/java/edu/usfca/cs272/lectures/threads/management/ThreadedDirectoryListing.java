@@ -131,11 +131,11 @@ public class ThreadedDirectoryListing {
 				catch (IOException ex) {
 					throw new UncheckedIOException(ex);
 				}
-
-				log.debug("Finished {}", path);
-
-				// almost done! now we can indicate we have 1 less "pending" work
-				decrementPending();
+				finally {
+					// almost done! now we can indicate we have 1 less "pending" work
+					decrementPending();
+					log.debug("Finished {}", path);
+				}
 			}
 		}
 
