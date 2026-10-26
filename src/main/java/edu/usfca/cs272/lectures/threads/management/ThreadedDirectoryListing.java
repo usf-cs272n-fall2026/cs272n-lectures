@@ -13,27 +13,23 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 
-/**
- * This class demonstrates a slightly better option than
- * {@link BlockingDirectoryListing} for making a multithreaded version of
- * {@link SerialDirectoryListing}. However, there are still performance issues
- * caused by creating so many little worker thread objects, which have to be
- * cleaned up by our garbage collector later.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @version Fall 2026
- */
+/// This class demonstrates a slightly better option than
+/// [BlockingDirectoryListing] for making a multithreaded version of
+/// [SerialDirectoryListing]. However, there are still performance issues caused
+/// by creating so many little worker thread objects, which have to be cleaned up
+/// by our garbage collector later.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @version Fall 2026
 public class ThreadedDirectoryListing {
-	/** Logger to use for this class. */
+	/// Logger to use for this class.
 	public static final Logger log = LogManager.getLogger();
 
-	/**
-	 * Returns a directory listing for the given path.
-	 *
-	 * @param path directory to create listing
-	 * @return paths found within directory and its subdirectories
-	 * @throws InterruptedException from {@link TaskManager#finish()}
-	 */
+	/// Returns a directory listing for the given path.
+	///
+	/// @param path directory to create listing
+	/// @return paths found within directory and its subdirectories
+	/// @throws InterruptedException from [TaskManager#finish()]
 	public static Set<Path> list(Path path) throws InterruptedException {
 		Set<Path> paths = new HashSet<>();
 
@@ -51,52 +47,42 @@ public class ThreadedDirectoryListing {
 		return paths;
 	}
 
-	/**
-	 * Instead of a static worker class, we will create a task manager that can keep
-	 * track of pending work.
-	 */
+	/// Instead of a static worker class, we will create a task manager that can keep
+	/// track of pending work.
 	private static class TaskManager {
-		/** The shared set of all paths found thus far. */
+		/// The shared set of all paths found thus far.
 		private final Set<Path> paths;
 
-		/** The amount of pending (or unfinished) work. */
+		/// The amount of pending (or unfinished) work.
 		private int pending;
 
-		/**
-		 * Initializes a task manager given a set of paths.
-		 *
-		 * @param paths the set of shared paths to populate
-		 */
+		/// Initializes a task manager given a set of paths.
+		///
+		/// @param paths the set of shared paths to populate
 		private TaskManager(Set<Path> paths) {
 			this.paths = paths;
 			this.pending = 0;
 		}
 
-		/**
-		 * Creates and starts the first worker for the directory.
-		 *
-		 * @param path directory to create listing
-		 */
+		/// Creates and starts the first worker for the directory.
+		///
+		/// @param path directory to create listing
 		private void start(Path path) {
 			Thread worker = new Worker(path);
 			worker.start();
 		}
 
-		/**
-		 * The non-static worker class that will update the shared paths and pending
-		 * members in our task manager instance.
-		 */
+		/// The non-static worker class that will update the shared paths and pending
+		/// members in our task manager instance.
 		private class Worker extends Thread {
-			/** The path to add or list. */
+			/// The path to add or list.
 			private final Path path;
 
 			// No longer need to pass in a reference to paths!
 
-			/**
-			 * Initializes this worker thread.
-			 *
-			 * @param path the path to add or list
-			 */
+			/// Initializes this worker thread.
+			///
+			/// @param path the path to add or list
 			public Worker(Path path) {
 				this.path = path;
 
@@ -158,12 +144,10 @@ public class ThreadedDirectoryListing {
 		 * should be synchronized!
 		 */
 
-		/**
-		 * Rather than having threads wait for each other (undoing our multithreading),
-		 * we will wait until all pending work is completed.
-		 *
-		 * @throws InterruptedException from {@link Thread#wait()}
-		 */
+		/// Rather than having threads wait for each other (undoing our multithreading),
+		/// we will wait until all pending work is completed.
+		///
+		/// @throws InterruptedException from [Thread#wait()]
 		private synchronized void finish() throws InterruptedException {
 			while (pending > 0) {
 				log.trace("Waiting to finish (pending: {})", pending);
@@ -175,17 +159,13 @@ public class ThreadedDirectoryListing {
 			log.debug("Pending work finished");
 		}
 
-		/**
-		 * Safely increments the shared pending variable.
-		 */
+		/// Safely increments the shared pending variable.
 		private synchronized void incrementPending() {
 			pending++;
 		}
 
-		/**
-		 * Safely decrements the shared pending variable, and wakes up any threads
-		 * waiting for work to be completed.
-		 */
+		/// Safely decrements the shared pending variable, and wakes up any threads
+		/// waiting for work to be completed.
 		private synchronized void decrementPending() {
 			assert pending > 0;
 			pending--;
@@ -201,13 +181,11 @@ public class ThreadedDirectoryListing {
 		}
 	}
 
-	/**
-	 * Tests the directory listing for the current directory.
-	 *
-	 * @param args unused
-	 * @throws IOException from {@link SerialDirectoryListing#list(Path)}
-	 * @throws InterruptedException from {@link #list(Path)}
-	 */
+	/// Tests the directory listing for the current directory.
+	///
+	/// @param args unused
+	/// @throws IOException from [SerialDirectoryListing#list(Path)]
+	/// @throws InterruptedException from [#list(Path)]
 	public static void main(String[] args) throws IOException, InterruptedException {
 		Configurator.setAllLevels("edu.usfca.cs272.SerialDirectoryListing", Level.OFF);
 		Path path = Path.of(".");
