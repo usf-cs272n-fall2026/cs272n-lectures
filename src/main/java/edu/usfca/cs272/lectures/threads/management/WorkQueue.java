@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 /// by Brian Goetz. It is up to the user of this class to keep track of whether
 /// there is any pending work remaining.
 ///
-/// Visit the archived article:
-/// [Java Theory and Practice: Thread Pools and Work Queues](https://web.archive.org/web/20210126172022/https://www.ibm.com/developerworks/library/j-jtp0730/index.html)
+/// Visit the archived <a href="https://web.archive.org/web/20210126172022/https://www.ibm.com/developerworks/library/j-jtp0730/index.html">
+/// Java Theory and Practice: Thread Pools and Work Queues</a> article.
 ///
 /// @author CS 272 Software Development (University of San Francisco)
 /// @version Fall 2026
