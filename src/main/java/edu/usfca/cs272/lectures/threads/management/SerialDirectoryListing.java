@@ -71,6 +71,6 @@ public class SerialDirectoryListing {
 	/// @param args unused
 	/// @throws IOException from [Files#newDirectoryStream(Path)]
 	public static void main(String[] args) throws IOException {
-		list(Path.of(".")).forEach(System.out::println);
+		list(Path.of("src")).forEach(System.out::println);
 	}
 }
