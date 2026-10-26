@@ -133,8 +133,8 @@ public class ThreadedDirectoryListing {
 				}
 				finally {
 					// almost done! now we can indicate we have 1 less "pending" work
-					decrementPending();
 					log.debug("Finished {}", path);
+					decrementPending();
 				}
 			}
 		}

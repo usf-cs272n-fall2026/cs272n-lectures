@@ -112,9 +112,10 @@ public class QueuedDirectoryListing {
 				catch (IOException ex) {
 					throw new UncheckedIOException(ex);
 				}
-
-				log.debug("Finished {}", path);
-				decrementPending();
+				finally {
+					log.debug("Finished {}", path);
+					decrementPending();
+				}
 			}
 		}
 
