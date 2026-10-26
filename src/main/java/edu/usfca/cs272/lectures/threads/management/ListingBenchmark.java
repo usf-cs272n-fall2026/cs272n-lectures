@@ -190,4 +190,7 @@ public class ListingBenchmark {
 			return this.minimum.compareTo(other.minimum);
 		}
 	}
+
+	/// Prevent instantiating this class of static methods.
+	private ListingBenchmark() {}
 }

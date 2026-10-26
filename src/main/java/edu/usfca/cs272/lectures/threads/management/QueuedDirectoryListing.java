@@ -169,6 +169,9 @@ public class QueuedDirectoryListing {
 		System.out.println(actual.equals(expected));
 	}
 
+	/// Prevent instantiating this class of static methods.
+	private QueuedDirectoryListing() {}
+
 	/*
 	 * So, are we FINALLY at the point where we are writing multithreading code
 	 * the way you should in your homework and projects? Almost! The next step is

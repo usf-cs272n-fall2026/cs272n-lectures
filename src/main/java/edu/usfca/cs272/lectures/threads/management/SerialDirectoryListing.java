@@ -73,4 +73,7 @@ public class SerialDirectoryListing {
 	public static void main(String[] args) throws IOException {
 		list(Path.of("src")).forEach(System.out::println);
 	}
+
+	/// Prevent instantiating this class of static methods.
+	private SerialDirectoryListing() {}
 }

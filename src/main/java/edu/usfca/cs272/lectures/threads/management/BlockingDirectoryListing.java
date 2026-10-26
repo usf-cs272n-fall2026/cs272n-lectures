@@ -145,4 +145,7 @@ public class BlockingDirectoryListing {
 		Set<Path> expected = SerialDirectoryListing.list(path);
 		System.out.println(actual.equals(expected));
 	}
+
+	/// Prevent instantiating this class of static methods.
+	private BlockingDirectoryListing() {}
 }
