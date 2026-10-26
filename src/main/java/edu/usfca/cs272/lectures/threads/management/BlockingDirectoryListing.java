@@ -13,26 +13,22 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 
-/**
- * This class demonstrates a simple but inefficient approach to multithreading
- * the {@link SerialDirectoryListing} class. It still has a single public static
- * method, but there are several private instance methods in here to help with
- * the multithreading aspects.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @version Fall 2026
- */
+/// This class demonstrates a simple but inefficient approach to multithreading
+/// the [SerialDirectoryListing] class. It still has a single `public` `static`
+/// method, but there are several private instance methods in here to help with
+/// the multithreading aspects.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @version Fall 2026
 public class BlockingDirectoryListing {
-	/** Logger to use for this class. */
+	/// Logger to use for this class.
 	public static final Logger log = LogManager.getLogger();
 
-	/**
-	 * Returns a directory listing for the given path.
-	 *
-	 * @param path directory to create listing
-	 * @return paths found within directory and its subdirectories
-	 * @throws InterruptedException from {@link Thread#join()}
-	 */
+	/// Returns a directory listing for the given path.
+	///
+	/// @param path directory to create listing
+	/// @return paths found within directory and its subdirectories
+	/// @throws InterruptedException from [Thread#join()]
 	public static Set<Path> list(Path path) throws InterruptedException {
 		Set<Path> paths = new HashSet<>();
 
@@ -58,23 +54,19 @@ public class BlockingDirectoryListing {
 		return paths;
 	}
 
-	/**
-	 * Will list the directory or add the path creating a new worker per each
-	 * subdirectory found.
-	 */
+	/// Will list the directory or add the path creating a new worker per each
+	/// subdirectory found.
 	private static class Worker extends Thread {
-		/** The path to add or list. */
+		/// The path to add or list.
 		private final Path path;
 
-		/** The shared set of all paths found thus far. */
+		/// The shared set of all paths found thus far.
 		private final Set<Path> paths;
 
-		/**
-		 * Initializes this worker thread.
-		 *
-		 * @param path the path to add or list
-		 * @param paths the shared set of all paths found thus far
-		 */
+		/// Initializes this worker thread.
+		///
+		/// @param path the path to add or list
+		/// @param paths the shared set of all paths found thus far
 		public Worker(Path path, Set<Path> paths) {
 			this.path = path;
 			this.paths = paths;
@@ -141,15 +133,13 @@ public class BlockingDirectoryListing {
 		}
 	}
 
-	/**
-	 * Tests the directory listing for the current directory.
-	 *
-	 * @param args unused
-	 * @throws InterruptedException from {@link #list(Path)}
-	 * @throws IOException from {@link SerialDirectoryListing#list(Path)}
-	 */
+	/// Tests the directory listing for the current directory.
+	///
+	/// @param args unused
+	/// @throws InterruptedException from [#list(Path)]
+	/// @throws IOException from [SerialDirectoryListing#list(Path)]
 	public static void main(String[] args) throws IOException, InterruptedException {
-		Configurator.setAllLevels("edu.usfca.cs272.SerialDirectoryListing", Level.OFF);
+		Configurator.setAllLevels(SerialDirectoryListing.log.getName(), Level.OFF);
 		Path path = Path.of(".");
 		Set<Path> actual = list(path);
 		Set<Path> expected = SerialDirectoryListing.list(path);
