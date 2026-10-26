@@ -14,18 +14,16 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.config.Configurator;
 
-/**
- * Attempts to benchmark the different multithreading approaches. Run multiple
- * times to see whether the execution order impacts runtimes.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @version Fall 2026
- */
+/// Attempts to benchmark the different multithreading approaches. Run multiple
+/// times to see whether the execution order impacts runtimes.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @version Fall 2026
 public class ListingBenchmark {
-	/** Number of warmup rounds. */
+	/// Number of warmup rounds.
 	public static final int WARMUP_ROUNDS = 10;
 
-	/** Number of timed rounds. */
+	/// Number of timed rounds.
 	public static final int TIMED_ROUNDS = 20;
 
 	/*
@@ -36,13 +34,11 @@ public class ListingBenchmark {
 	 * many write operations versus read operations.
 	 */
 
-	/**
-	 * Runs the benchmarks in random order.
-	 *
-	 * @param args unused
-	 * @throws IOException if an I/O exception occurs
-	 * @throws InterruptedException if interrupted
-	 */
+	/// Runs the benchmarks in random order.
+	///
+	/// @param args unused
+	/// @throws IOException if an I/O exception occurs
+	/// @throws InterruptedException if interrupted
 	public static void main(String[] args) throws IOException, InterruptedException {
 		// TURN OFF LOGGING BEFORE RUNNING THIS!
 		Configurator.setAllLevels(LogManager.getRootLogger().getName(), Level.OFF);
@@ -117,48 +113,40 @@ public class ListingBenchmark {
 		}
 	}
 
-	/**
-	 * A class to benchmark directory listings.
-	 */
+	/// A class to benchmark directory listings.
 	private static abstract class Benchmarker implements Comparable<Benchmarker> {
-		/** Name of the benchmark. */
+		/// Name of the benchmark.
 		public String name;
 
-		/** Total elapsed runtime. */
+		/// Total elapsed runtime.
 		public Duration total;
 
-		/** Calculated minimum runtime. */
+		/// Calculated minimum runtime.
 		public Duration minimum;
 
-		/**
-		 * Initializes this benchmark.
-		 *
-		 * @param name the name of the benchmark
-		 */
+		/// Initializes this benchmark.
+		///
+		/// @param name the name of the benchmark
 		public Benchmarker(String name) {
 			this.name = name;
 			this.total = Duration.ZERO;
 			this.minimum = Duration.ofDays(1);
 		}
 
-		/**
-		 * Generates a directory listing.
-		 *
-		 * @param directory the directory to start with
-		 * @return set of paths found within the directory
-		 * @throws IOException if an I/O exception occurs
-		 * @throws InterruptedException if interrupted
-		 */
+		/// Generates a directory listing.
+		///
+		/// @param directory the directory to start with
+		/// @return set of paths found within the directory
+		/// @throws IOException if an I/O exception occurs
+		/// @throws InterruptedException if interrupted
 		public abstract Set<Path> run(Path directory) throws IOException, InterruptedException;
 
-		/**
-		 * Conducts the benchmark.
-		 *
-		 * @param directory the directory to start with
-		 * @param expected the expected results
-		 * @throws IOException if an I/O exception occurs
-		 * @throws InterruptedException if interrupted
-		 */
+		/// Conducts the benchmark.
+		///
+		/// @param directory the directory to start with
+		/// @param expected the expected results
+		/// @throws IOException if an I/O exception occurs
+		/// @throws InterruptedException if interrupted
 		public void benchmark(Path directory, Set<Path> expected) throws InterruptedException, IOException {
 			System.out.print(String.format("%9s: ", name));
 			Runtime.getRuntime().gc();
