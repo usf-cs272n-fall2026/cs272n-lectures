@@ -140,7 +140,7 @@ public class BlockingDirectoryListing {
 	/// @throws IOException from [SerialDirectoryListing#list(Path)]
 	public static void main(String[] args) throws IOException, InterruptedException {
 		Configurator.setAllLevels(SerialDirectoryListing.log.getName(), Level.OFF);
-		Path path = Path.of(".");
+		Path path = Path.of("src");
 		Set<Path> actual = list(path);
 		Set<Path> expected = SerialDirectoryListing.list(path);
 		System.out.println(actual.equals(expected));
