@@ -7,8 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /// A simple work queue implementation based on the IBM developerWorks article
-/// by Brian Goetz. It is up to the user of this class to keep track of whether
-/// there is any pending work remaining.
+/// by Brian Goetz.
 ///
 /// Visit the archived <a href="https://web.archive.org/web/20210126172022/https://www.ibm.com/developerworks/library/j-jtp0730/index.html">
 /// Java Theory and Practice: Thread Pools and Work Queues</a> article.
@@ -40,8 +39,13 @@ public class WorkQueue {
 
 	/// Starts a work queue with the specified number of threads.
 	///
-	/// @param threads number of worker threads; should be greater than 1
-	public WorkQueue(int threads) {
+	/// @param threads number of worker threads; must be at least 1
+	/// @throws IllegalArgumentException if threads is less than 1
+	public WorkQueue(int threads) throws IllegalArgumentException {
+		if (threads < 1) {
+			throw new IllegalArgumentException("Must have at least 1 worker thread.");
+		}
+
 		this.tasks = new LinkedList<Runnable>();
 		this.workers = new Worker[threads];
 		this.shutdown = false;
