@@ -23,8 +23,7 @@ public class ContextServer {
 	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2
-	/// as well)
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2)
 	public static Logger log = LogManager.getLogger();
 
 	/// Sets up a Jetty server with two different servlet context handlers.
