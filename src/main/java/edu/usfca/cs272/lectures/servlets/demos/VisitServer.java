@@ -25,7 +25,7 @@ public class VisitServer {
 	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2 as well)
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2)
 	public static Logger log = LogManager.getLogger();
 
 	// Keep in mind our server is multithreaded, so we need to use
@@ -52,7 +52,8 @@ public class VisitServer {
 		server.join();
 	}
 
-	/// Increments the number of visits to this website and outputs the current value.
+	/// Increments the number of visits to this website and outputs the
+	/// current value.
 	public static class VisitServlet extends HttpServlet {
 		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
