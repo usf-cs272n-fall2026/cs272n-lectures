@@ -27,49 +27,45 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Demonstrates how to create, use, and clear cookies.
- *
- * @see CookieVisitServlet
- * @see CookieLandingServlet
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates how to create, use, and clear cookies.
+///
+/// @see CookieVisitServlet
+/// @see CookieLandingServlet
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class CookieVisitServlet extends HttpServlet {
-	/** Class version for serialization, in [YEAR][TERM] format (unused). */
+	/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 	private static final long serialVersionUID = 202608;
 
-	/** Logger for this servlet. */
+	/// Logger for this servlet.
 	private static final Logger log = LogManager.getLogger();
 
-	/** The title to use for this webpage. */
+	/// The title to use for this webpage.
 	private static final String TITLE = "Cookies!";
 
-	/** Used to fetch whether cookies were approved. */
+	/// Used to fetch whether cookies were approved.
 	private static final String COOKIES_OK = "Cookies";
 
-	/** Used to fetch the visited date from a cookie. */
+	/// Used to fetch the visited date from a cookie.
 	private static final String VISIT_DATE = "Visited";
 
-	/** Used to fetch the visited count from a cookie. */
+	/// Used to fetch the visited count from a cookie.
 	private static final String VISIT_COUNT = "Count";
 
-	/** Used to format date/time output. */
+	/// Used to format date/time output.
 	private static final String DATE_FORMAT = "hh:mm a 'on' EEEE, MMMM dd yyyy";
 
-	/** Location of the HTML template for this servlet. */
+	/// Location of the HTML template for this servlet.
 	private static final Path TEMPLATE_PATH = Path.of("src", "main", "resources", "cookies",  "cookie_visits.html");
 
-	/** HTML template. */
+	/// HTML template.
 	private final String template;
 
-	/**
-	 * Initializes the HTML template.
-	 *
-	 * @throws IOException if unable to load the template
-	 */
+	/// Initializes the HTML template.
+	///
+	/// @throws IOException if unable to load the template
 	public CookieVisitServlet() throws IOException {
 		template = Files.readString(TEMPLATE_PATH, UTF_8);
 	}
@@ -204,13 +200,11 @@ public class CookieVisitServlet extends HttpServlet {
 		response.sendRedirect(request.getRequestURI());
 	}
 
-	/**
-	 * Gets the cookies from the HTTP request and maps the cookie name to the cookie
-	 * object.
-	 *
-	 * @param request the HTTP request from web server
-	 * @return map from cookie key to cookie value
-	 */
+	/// Gets the cookies from the HTTP request and maps the cookie name to the
+	/// cookie object.
+	///
+	/// @param request the HTTP request from web server
+	/// @return map from cookie key to cookie value
 	public static Map<String, Cookie> getCookieMap(HttpServletRequest request) {
 		HashMap<String, Cookie> map = new HashMap<>();
 		Cookie[] cookies = request.getCookies();
@@ -224,12 +218,10 @@ public class CookieVisitServlet extends HttpServlet {
 		return map;
 	}
 
-	/**
-	 * Clears all of the cookies included in the HTTP request.
-	 *
-	 * @param request the HTTP request
-	 * @param response the HTTP response
-	 */
+	/// Clears all of the cookies included in the HTTP request.
+	///
+	/// @param request the HTTP request
+	/// @param response the HTTP response
 	public static void clearCookies(HttpServletRequest request, HttpServletResponse response) {
 		Cookie[] cookies = request.getCookies();
 
