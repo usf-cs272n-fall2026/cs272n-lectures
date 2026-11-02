@@ -28,75 +28,65 @@ import jakarta.servlet.http.HttpServletResponse;
 // Apache Comments:
 // https://commons.apache.org/proper/commons-lang/download_lang.cgi
 
-/**
- * The servlet class responsible for setting up a simple message board.
- *
- * @see MessageServer
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// The servlet class responsible for setting up a simple message board.
+///
+/// @see MessageServer
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class MessageServlet extends HttpServlet {
-	/** The logger to use for this servlet. */
+	/// The logger to use for this servlet.
 	private static final Logger log = LogManager.getLogger();
 
-	/** Class version for serialization, in [YEAR][TERM] format (unused). */
+	/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 	private static final long serialVersionUID = 202608;
 
-	/** Format used for all date output. */
+	/// Format used for all date output.
 	public static final String longDateFormat = "hh:mm a 'on' EEEE, MMMM dd yyyy";
 
-	/** Used to format dates (already thread-safe). */
+	/// Used to format dates (already thread-safe).
 	public static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(longDateFormat);
 
-	/** The title to use for this webpage. */
+	/// The title to use for this webpage.
 	public static final String title = "Messages";
 
-	/** Base path with HTML templates. */
+	/// Base path with HTML templates.
 	public static final Path base = Path.of("src", "main", "resources", "messages");
 
-	/** Template for HTML. **/
+	/// Template for HTML.
 	private final String htmlTemplate;
 
-	/** The data structure to use for storing messages. */
+	/// The data structure to use for storing messages.
 	private final LinkedList<Message> messages;
 
-	/**
-	 * A record that stores a single message.
-	 *
-	 * @param body the message
-	 * @param name the message author
-	 * @param date the message posted date
-	 */
+	/// A record that stores a single message.
+	///
+	/// @param body the message
+	/// @param name the message author
+	/// @param date the message posted date
 	// javadoc bug, see: https://bugs.openjdk.org/browse/JDK-8284994
 	public static record Message(String body, String name, LocalDateTime date) {
 		// Can add additional methods to a record
 
-		/**
-		 * Returns values as HTML.
-		 * @return values as html
-		 */
+		/// Returns values as HTML.
+		/// @return values as html
 		public String html() {
 			String format = "<p>%s<br><font size=\"-2\">[ posted by %s at %s ]</font></p>";
 			return String.format(format, body, name, dateFormatter.format(date));
 		}
 
-		/**
-		 * Returns values in a handy map.
-		 * @return values in a map
-		 */
+		/// Returns values in a handy map.
+		/// @return values in a map
 		public Map<String, String> map() {
 			return Map.of("name", name, "body", body, "date", dateFormatter.format(date));
 		}
 	}
 
-	/**
-	 * Initializes this message board. Each message board has its own collection
-	 * of messages.
-	 *
-	 * @throws IOException if unable to read template
-	 */
+	/// Initializes this message board. Each message board has its own
+	/// collection of messages.
+	///
+	/// @throws IOException if unable to read template
 	public MessageServlet() throws IOException {
 		super();
 		messages = new LinkedList<>();
