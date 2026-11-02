@@ -4,46 +4,34 @@ import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Server;
 
-/**
- * Demonstrates how to create, use, and clear cookies. Uses
- * {@link StringEscapeUtils} to sanitize data fetched from cookies.
- *
- * <p>
- * Read about the "cookie law" on getting consent to store cookies at:
- * <a href="https://gdpr.eu/cookies/">https://gdpr.eu/cookies</a>
- *
- * <p>
- * When using cookies, keep in mind the following:
- *
- * <ol>
- * <li>Clearly notify users that cookies are being used and what they store.
- *
- * <li>Let users know what happens if they accept or reject those cookies, but
- * do NOT block access if consent is not given.
- *
- * <li>Collect consent BEFORE storing any cookies. Treat the lack of consent as
- * rejecting cookies.
- *
- * <li>Store consent (for documentation purposes) when given.
- *
- * <li>Make it easy to change consent at any time.
- * </ol>
- *
- * @see CookieVisitServlet
- * @see CookieLandingServlet
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates how to create, use, and clear cookies. Uses
+/// [StringEscapeUtils] to sanitize data fetched from cookies.
+///
+/// Read about the "cookie law" on getting consent to store cookies at:
+/// <https://gdpr.eu/cookies/>
+///
+/// When using cookies, keep in mind the following:
+///
+/// 1. Clearly notify users that cookies are being used and what they store.
+/// 2. Let users know what happens if they accept or reject those cookies, but
+///    do NOT block access if consent is not given.
+/// 3. Collect consent BEFORE storing any cookies. Treat the lack of consent as
+///    rejecting cookies.
+/// 4. Store consent (for documentation purposes) when given.
+/// 5. Make it easy to change consent at any time.
+///
+/// @see CookieVisitServlet
+/// @see CookieLandingServlet
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class CookieServer {
-	/**
-	 * Starts a Jetty server configured to use the cookie index and config
-	 * servlets.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start or run server
-	 */
+	/// Starts a Jetty server configured to use the cookie index and config
+	/// servlets.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start or run server
 	public static void main(String[] args) throws Exception {
 		ServletContextHandler handler = new ServletContextHandler();
 		handler.addServlet(CookieLandingServlet.class, "/");
@@ -55,7 +43,7 @@ public class CookieServer {
 		server.join();
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private CookieServer() {
 	}
 }
