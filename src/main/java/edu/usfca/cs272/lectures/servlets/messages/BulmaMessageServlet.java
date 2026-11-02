@@ -22,47 +22,43 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * An alternative implemention of the {@MessageServlet} class but using the
- * Bulma CSS framework.
- *
- * @see MessageServlet
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// An alternative implemention of the [MessageServlet] class but using the
+/// Bulma CSS framework.
+///
+/// @see MessageServlet
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class BulmaMessageServlet extends HttpServlet {
-	/** Class version for serialization, in [YEAR][TERM] format (unused). */
+	/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 	private static final long serialVersionUID = 202608;
 
-	/** The title to use for this webpage. */
+	/// The title to use for this webpage.
 	private static final String title = "Fancy Messages";
 
-	/** The logger to use for this servlet. */
+	/// The logger to use for this servlet.
 	private static final Logger log = LogManager.getLogger();
 
-	/** Base path with HTML templates. */
+	/// Base path with HTML templates.
 	private static final Path base = MessageServlet.base;
 
-	/** The data structure to use for storing messages. */
+	/// The data structure to use for storing messages.
 	private final LinkedList<MessageServlet.Message> messages;
 
-	/** Template for starting HTML (including head tag). **/
+	/// Template for starting HTML (including head tag).
 	private final String headTemplate;
 
-	/** Template for ending HTML (including foot tag). **/
+	/// Template for ending HTML (including foot tag).
 	private final String footTemplate;
 
-	/** Template for individual message HTML. **/
+	/// Template for individual message HTML.
 	private final String textTemplate;
 
-	/**
-	 * Initializes this message board. Each message board has its own collection
-	 * of messages.
-	 *
-	 * @throws IOException if unable to read templates
-	 */
+	/// Initializes this message board. Each message board has its own
+	/// collection of messages.
+	///
+	/// @throws IOException if unable to read templates
 	public BulmaMessageServlet() throws IOException {
 		super();
 		messages = new LinkedList<>();
