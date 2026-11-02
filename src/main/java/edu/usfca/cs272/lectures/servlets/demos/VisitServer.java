@@ -14,39 +14,31 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * A simple example of using Jetty and servlets to track the number of visitors
- * to a web page, demonstrating that this code is run in a multi-threaded
- * setting.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// A simple example of using Jetty and servlets to track the number of visitors
+/// to a web page, demonstrating that this code is run in a multi-threaded
+/// setting.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class VisitServer {
-	/** The hard-coded port to run this server. */
+	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/**
-	 * The logger to use (Jetty is configured via the pom.xml to use Log4j2 as well)
-	 */
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2 as well)
 	public static Logger log = LogManager.getLogger();
 
 	// Keep in mind our server is multithreaded, so we need to use
 	// storage safe for access by multiple threads simultaneously
 
-	/**
-	 * A thread-safe counter to track number of visits to this website since the
-	 * server was started.
-	 */
+	/// A thread-safe counter to track number of visits to this website since the
+	/// server was started.
 	private static AtomicInteger visits = new AtomicInteger();
 
-	/**
-	 * Sets up a Jetty server configured to use the servlets defined in this class.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start web server
-	 */
+	/// Sets up a Jetty server configured to use the servlets defined in this class.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start web server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
@@ -60,18 +52,15 @@ public class VisitServer {
 		server.join();
 	}
 
-	/**
-	 * Increments the number of visits to this website and outputs the current
-	 * value.
-	 */
+	/// Increments the number of visits to this website and outputs the current value.
 	public static class VisitServlet extends HttpServlet {
-		/** Class version for serialization, in [YEAR][TERM] format (unused). */
+		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
 
-		/** The title to use for this webpage. */
+		/// The title to use for this webpage.
 		private static final String TITLE = "Visits";
 
-		/** Creates a new instance of this class. */
+		/// Creates a new instance of this class.
 		public VisitServlet() {}
 
 		@Override
@@ -113,7 +102,6 @@ public class VisitServer {
 		}
 	}
 
-	/** Prevent instantiating this class of static methods. */
-	private VisitServer() {
-	}
+	/// Prevent instantiating this class of static methods.
+	private VisitServer() {}
 }
