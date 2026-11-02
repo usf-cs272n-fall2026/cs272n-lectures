@@ -22,30 +22,28 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-/**
- * Demonstrates how to use session tracking and enum types to create a simple
- * adventure game.
- *
- * @see AdventureServer
- * @see AdventureServlet
- * @see AdventureRoom
- * @see Direction
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates how to use session tracking and enum types to create a simple
+/// adventure game.
+///
+/// @see AdventureServer
+/// @see AdventureServlet
+/// @see AdventureRoom
+/// @see Direction
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class AdventureServlet extends HttpServlet {
-	/** Class version for serialization, in [YEAR][TERM] format (unused). */
+	/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 	private static final long serialVersionUID = 202608;
 
-	/** The logger for this servlet */
+	/// The logger for this servlet
 	private static Logger log = LogManager.getLogger();
 
-	/** The title to use for this webpage. */
+	/// The title to use for this webpage.
 	private static final String TITLE = "Adventure!";
 
-	/** Location of the HTML template for this servlet. */
+	/// Location of the HTML template for this servlet.
 	private static final Path TEMPLATE_PATH = Path.of("src", "main", "resources", "adventure",  "adventure.html");
 
 	@Override
@@ -142,7 +140,7 @@ public class AdventureServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	/** Creates a new instance of this class. */
+	/// Creates a new instance of this class.
 	public AdventureServlet() {
 	}
 }
