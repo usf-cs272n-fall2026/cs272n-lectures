@@ -4,24 +4,20 @@ import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.ee11.servlet.ServletHolder;
 import org.eclipse.jetty.server.Server;
 
-/**
- * Demonstrates how to create a simple message board using Jetty and servlets,
- * as well as how to initialize servlets when you need to call its constructor.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates how to create a simple message board using Jetty and servlets,
+/// as well as how to initialize servlets when you need to call its constructor.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class MessageServer {
-	/** The hard-coded port to run this server. */
+	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/**
-	 * Sets up a Jetty server with different servlet instances.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start and run server
-	 */
+	/// Sets up a Jetty server with different servlet instances.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start and run server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
@@ -37,7 +33,7 @@ public class MessageServer {
 		server.join();
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private MessageServer() {
 	}
 }
