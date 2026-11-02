@@ -1,59 +1,18 @@
 package edu.usfca.cs272.templates.servlets.demos;
 
-import java.nio.file.Path;
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.util.resource.Resource;
-import org.eclipse.jetty.util.resource.ResourceFactory;
 
-/// A simple example of using Jetty and servlets to both serve static resources
-/// and dynamic content.
-///
-/// @author CS 272 Software Development (University of San Francisco)
-/// @author Claude Opus 5.5 (Anthropic)
-/// @version Fall 2026
 public class SimpleFileServer {
-	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
-
-	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2)
 	public static Logger log = LogManager.getLogger();
 
-	/// Sets up a Jetty server with both a resource and servlet handler. Able to
-	/// respond with static and dynamic content.
-	///
-	/// @param args unused
-	/// @throws Exception if unable to start server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
-		// Add static resource holders to web server
-		// This indicates where web files are accessible on the file system
-		// https://jetty.org/docs/jetty/12.1/programming-guide/server/http.html#handler-use-resource
-		ResourceHandler resourceHandler = new ResourceHandler();
-		resourceHandler.setDirAllowed(true);
+		// TODO
 
-		// Try both "." and "./src"
-		Path basePath = Path.of(".").toAbsolutePath().normalize();
-		Resource baseResource = ResourceFactory.of(resourceHandler).newResource(basePath);
-		resourceHandler.setBaseResource(baseResource);
-
-		// Can still assign servlets to specific requests
-		ServletContextHandler servletHandler = new ServletContextHandler();
-		servletHandler.addServlet(VisitServer.VisitServlet.class, "/visits");
-		servletHandler.addServlet(TodayServer.TodayServlet.class, "/today");
-
-		// Setup handlers (and handler order)
-		List<Handler> handlers = List.of(resourceHandler, servletHandler);
-		Handler.Sequence sequence = new Handler.Sequence(handlers);
-
-		server.setHandler(sequence);
 		server.start();
 
 		log.info("Server: {} with {} threads", server.getState(), server.getThreadPool().getThreads());
@@ -62,9 +21,5 @@ public class SimpleFileServer {
 		// http://localhost:8080/
 		// http://localhost:8080/visits
 		// http://localhost:8080/src/
-	}
-
-	/// Prevent instantiating this class of static methods.
-	private SimpleFileServer() {
 	}
 }
