@@ -14,6 +14,12 @@
 			<PatternLayout pattern="%logger [%3sequenceNumber %date{HH:mm:ss:SSS} %-5level{lowerCase=true}] %file#%line %thread: %message%n">
 			</PatternLayout>
 		</File>
+		
+		<!-- We can customize the Jetty log output. -->
+		<Console name="JettyConsole" target="SYSTEM_OUT">
+			<PatternLayout pattern="%thread - %m%n">
+			</PatternLayout>
+		</Console>
 	</Appenders>
 
 	<Loggers>
@@ -24,6 +30,19 @@
 
 		<Logger name="edu.usfca.cs272.lectures.debugging.Log4jDemo.Inner" level="TRACE" additivity="false">
 			<AppenderRef ref="Console" />
+		</Logger>
+		
+		<!-- Configuration for Jetty and servlets -->
+		<Logger name="org.eclipse.jetty" level="INFO" additivity="false">
+			<AppenderRef ref="JettyConsole" />
+		</Logger>
+
+		<Logger name="edu.usfca.cs272.lectures.servlets" level="INFO" additivity="false">
+			<AppenderRef ref="JettyConsole" />
+		</Logger>
+		
+		<Logger name="edu.usfca.cs272.templates.servlets" level="INFO" additivity="false">
+			<AppenderRef ref="JettyConsole" />
 		</Logger>
 
 		<!-- This is the configuration used by all other loggers. -->
