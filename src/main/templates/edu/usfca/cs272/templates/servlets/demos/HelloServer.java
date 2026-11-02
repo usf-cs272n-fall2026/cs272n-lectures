@@ -16,29 +16,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/// Demonstrates the danger of using user-input in a web application, especially
-/// regarding cross-site scripting (XSS) attacks.
-///
-/// @author CS 272 Software Development (University of San Francisco)
-/// @author Claude Opus 5.5 (Anthropic)
-/// @version Fall 2026
 public class HelloServer {
-	/// The hard-coded port to run this server. Should make configurable!
 	public static final int PORT = 8080;
-
-	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2)
 	public static Logger log = LogManager.getLogger();
 
-	/// Sets up a Jetty server with two servlet mappings.
-	///
-	/// @param args unused
-	/// @throws Exception if unable to start web server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
 		ServletContextHandler handler = new ServletContextHandler();
-		handler.addServlet(HelloServlet.class, "/hello");
-		handler.addServlet(TodayServer.TodayServlet.class, "/today");
+		// TODO
 
 		server.setHandler(handler);
 		server.start();
@@ -47,25 +33,15 @@ public class HelloServer {
 		server.join();
 	}
 
-	/// Returns the day of the week for today's date.
-	///
-	/// @return the day of the week for today's date
 	public static String dayOfWeek() {
 		return LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.ENGLISH);
 	}
 
-	/// Reads user name passed via a GET query string and uses that input to say
-	/// hello to the user. Demonstrates XSS attacks caused by this approach. THIS
-	/// IS AN EXAMPLE OF WHAT **NOT** TO DO!
 	public static class HelloServlet extends HttpServlet {
-		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
-
-		/// The title to use for this webpage.
 		private static final String TITLE = "Hello";
 
-		/// Creates a new instance of this class.
-		public HelloServlet() {}
+		// https://duckduckgo.com/?q=hello world
 
 		@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -89,31 +65,18 @@ public class HelloServer {
 					</html>
 					""";
 
-			String name = request.getParameter("name");
-			name = name == null ? "anonymous" : name;
-
-			/*
-			 * This can lead to a cross-site scripting attack! NEVER directly use
-			 * input from the user in your webpage.
-			 *
-			 * Some browsers are smart enough to not load Javascript found within the
-			 * URL request... so these examples may no longer work.
-			 */
-
-			// http://localhost:8080/hello?name=Sophie
-			// http://localhost:8080/hello?name=<marquee>Sophie</marquee>
-			// http://localhost:8080/hello?name=<script>window.open("http://www.usfca.edu/");</script>
-			// http://localhost:8080/hello?name=<script>alert("Mwahaha");</script>
+			// TODO
 
 			PrintWriter out = response.getWriter();
-			out.printf(html, TITLE, name, dayOfWeek());
+			out.println(html); // TODO
 
 			response.setContentType("text/html");
 			response.setStatus(HttpServletResponse.SC_OK);
 		}
 	}
 
-	/// Prevent instantiating this class of static methods.
-	private HelloServer() {
-	}
+	// http://localhost:8080/hello?name=Sophie
+	// http://localhost:8080/hello?name=<marquee>Sophie</marquee>
+	// http://localhost:8080/hello?name=<script>window.open("http://www.usfca.edu/");</script>
+	// http://localhost:8080/hello?name=<script>alert("Mwahaha");</script>
 }
