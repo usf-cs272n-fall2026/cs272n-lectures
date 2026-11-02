@@ -18,7 +18,7 @@ import org.eclipse.jetty.util.resource.ResourceFactory;
  *
  * @author CS 272 Software Development (University of San Francisco)
  * @author Claude Opus 5.5 (Anthropic)
- * @version Spring 2025
+ * @version Fall 2026
  */
 public class SimpleFileServer {
 	/** The hard-coded port to run this server. */

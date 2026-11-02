@@ -32,11 +32,12 @@ import jakarta.servlet.http.HttpSession;
  * @see Direction
  *
  * @author CS 272 Software Development (University of San Francisco)
- * @version Spring 2025
+ * @author Claude Opus 5.5 (Anthropic)
+ * @version Fall 2026
  */
 public class AdventureServlet extends HttpServlet {
 	/** Class version for serialization, in [YEAR][TERM] format (unused). */
-	private static final long serialVersionUID = 202501;
+	private static final long serialVersionUID = 202608;
 
 	/** The logger for this servlet */
 	private static Logger log = LogManager.getLogger();

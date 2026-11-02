@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author CS 272 Software Development (University of San Francisco)
  * @author Claude Opus 5.5 (Anthropic)
- * @version Spring 2025
+ * @version Fall 2026
  */
 public class GalleryServer {
 	/** The hard-coded port to run this server. */
@@ -96,7 +96,7 @@ public class GalleryServer {
 	 */
 	public static class GalleryServlet extends HttpServlet {
 		/** Class version for serialization, in [YEAR][TERM] format (unused). */
-		private static final long serialVersionUID = 202501;
+		private static final long serialVersionUID = 202608;
 
 		/** The title to use for this webpage. */
 		private static final String TITLE = "Gallery";

@@ -34,7 +34,7 @@ import org.eclipse.jetty.server.Server;
  *
  * @author CS 272 Software Development (University of San Francisco)
  * @author Claude Opus 5.5 (Anthropic)
- * @version Spring 2025
+ * @version Fall 2026
  */
 public class CookieServer {
 	/**
