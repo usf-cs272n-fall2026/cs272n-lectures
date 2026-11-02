@@ -45,6 +45,8 @@ public class ReverseServer {
 		server.join();
 	}
 
+	// NOTE: Use the "Network" view of Developer Tools in browser.
+
 	/// Outputs and responds to HTML form.
 	public static class ReverseGetServlet extends HttpServlet {
 		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
