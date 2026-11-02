@@ -13,29 +13,24 @@ import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.util.resource.ResourceFactory;
 
-/**
- * Demonstrates how to use servlet contexts to configure which servlets handle
- * which requests.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates how to use servlet contexts to configure which servlets handle
+/// which requests.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class ContextServer {
-	/** The hard-coded port to run this server. */
+	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/**
-	 * The logger to use (Jetty is configured via the pom.xml to use Log4j2 as well)
-	 */
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2
+	/// as well)
 	public static Logger log = LogManager.getLogger();
 
-	/**
-	 * Sets up a Jetty server with two different servlet context handlers.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start and run server
-	 */
+	/// Sets up a Jetty server with two different servlet context handlers.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start and run server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
@@ -95,7 +90,7 @@ public class ContextServer {
 		 */
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private ContextServer() {
 	}
 }
