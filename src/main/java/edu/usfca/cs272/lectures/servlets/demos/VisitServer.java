@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Server;
 
 import jakarta.servlet.ServletException;
@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * setting.
  *
  * @author CS 272 Software Development (University of San Francisco)
+ * @author Claude Opus 5.5 (Anthropic)
  * @version Spring 2025
  */
 public class VisitServer {

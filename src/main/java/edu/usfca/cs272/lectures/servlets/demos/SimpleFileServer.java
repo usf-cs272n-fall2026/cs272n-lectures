@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -17,6 +17,7 @@ import org.eclipse.jetty.util.resource.ResourceFactory;
  * and dynamic content.
  *
  * @author CS 272 Software Development (University of San Francisco)
+ * @author Claude Opus 5.5 (Anthropic)
  * @version Spring 2025
  */
 public class SimpleFileServer {

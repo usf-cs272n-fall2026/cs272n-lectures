@@ -1,7 +1,7 @@
 package edu.usfca.cs272.lectures.servlets.cookies;
 
 import org.apache.commons.text.StringEscapeUtils;
-import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Server;
 
 /**
@@ -33,6 +33,7 @@ import org.eclipse.jetty.server.Server;
  * @see CookieLandingServlet
  *
  * @author CS 272 Software Development (University of San Francisco)
+ * @author Claude Opus 5.5 (Anthropic)
  * @version Spring 2025
  */
 public class CookieServer {

@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import org.apache.commons.text.StringEscapeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Server;
 
 import jakarta.servlet.ServletException;
@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * A simple example of using Jetty and servlets to use an HTML form.
  *
  * @author CS 272 Software Development (University of San Francisco)
+ * @author Claude Opus 5.5 (Anthropic)
  * @version Spring 2025
  */
 public class ReverseServer {

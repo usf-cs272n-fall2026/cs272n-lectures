@@ -1,6 +1,6 @@
 package edu.usfca.cs272.lectures.servlets.adventure;
 
-import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
@@ -16,6 +16,7 @@ import org.eclipse.jetty.server.handler.DefaultHandler;
  * @see Direction
  *
  * @author CS 272 Software Development (University of San Francisco)
+ * @author Claude Opus 5.5 (Anthropic)
  * @version Spring 2025
  */
 public class AdventureServer {
