@@ -22,37 +22,31 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * Demonstrates one way to serve both dynamic and static resources. Requires a
- * local web/foto directory with several jpg images to function properly.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates one way to serve both dynamic and static resources. Requires a
+/// local `web/foto` directory with several jpg images to function properly.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class GalleryServer {
-	/** The hard-coded port to run this server. */
+	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/**
-	 * The logger to use (Jetty is configured via the pom.xml to use Log4j2 as well)
-	 */
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2
+	/// as well)
 	public static Logger log = LogManager.getLogger();
 
-	/** Location of file resources. */
-	public static final Path base = Path.of("src", "main", "resources")
-			.toAbsolutePath().normalize();
+	/// Location of file resources.
+	public static final Path base = Path.of("src", "main", "resources").toAbsolutePath().normalize();
 
-	/** Location of photos. */
+	/// Location of photos.
 	public static final Path foto = base.resolve("foto");
 
-	/**
-	 * Sets up a Jetty server with a resource, context, and servlet context handler
-	 * to respond to requests for both dynamic and static resources.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start and run server
-	 */
+	/// Sets up a Jetty server with a resource, context, and servlet context
+	/// handler to respond to requests for both dynamic and static resources.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start and run server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
@@ -90,18 +84,16 @@ public class GalleryServer {
 		// http://localhost:8080/images
 	}
 
-	/**
-	 * Automatically adds all of the images found in the web/foto subdirectory to a
-	 * gallery page.
-	 */
+	/// Automatically adds all of the images found in the `web/foto`
+	/// subdirectory to a gallery page.
 	public static class GalleryServlet extends HttpServlet {
-		/** Class version for serialization, in [YEAR][TERM] format (unused). */
+		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
 
-		/** The title to use for this webpage. */
+		/// The title to use for this webpage.
 		private static final String TITLE = "Gallery";
 
-		/** Creates a new instance of this class. */
+		/// Creates a new instance of this class.
 		public GalleryServlet() {}
 
 		@Override
@@ -151,7 +143,7 @@ public class GalleryServer {
 		}
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private GalleryServer() {
 	}
 }
