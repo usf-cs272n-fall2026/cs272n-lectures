@@ -6,26 +6,22 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.DefaultHandler;
 
-/**
- * Demonstrates how to use session tracking and enum types to create a simple
- * adventure game.
- *
- * @see AdventureServer
- * @see AdventureServlet
- * @see AdventureRoom
- * @see Direction
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// Demonstrates how to use session tracking and enum types to create a simple
+/// adventure game.
+///
+/// @see AdventureServer
+/// @see AdventureServlet
+/// @see AdventureRoom
+/// @see Direction
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class AdventureServer {
-	/**
-	 * Initializes and starts the adventure game server.
-	 *
-	 * @param args unused
-	 * @throws Exception in unable to start or run server
-	 */
+	/// Initializes and starts the adventure game server.
+	///
+	/// @param args unused
+	/// @throws Exception in unable to start or run server
 	public static void main(String[] args) throws Exception {
 		// type of handler that supports sessions
 		ServletContextHandler servletContext = null;
@@ -53,7 +49,7 @@ public class AdventureServer {
 		server.join();
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private AdventureServer() {
 	}
 }
