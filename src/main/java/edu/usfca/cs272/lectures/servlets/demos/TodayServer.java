@@ -29,6 +29,13 @@ public class TodayServer {
 	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2 as well)
 	public static Logger log = LogManager.getLogger();
 
+	/// The pattern used to format the current date and time.
+	public static final String FORMAT = "hh:mm:ss a 'on' EEEE, MMMM dd yyyy";
+
+	/// The formatter used to format the current date and time. Formatters are
+	/// immutable and thread-safe, so a single instance can be shared.
+	public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(FORMAT);
+
 	/// Sets up a Jetty server with explicit connector and handler components.
 	///
 	/// @param args unused
@@ -104,10 +111,8 @@ public class TodayServer {
 	///
 	/// @return current date and time
 	public static String getDate() {
-		String format = "hh:mm:ss a 'on' EEEE, MMMM dd yyyy";
 		LocalDateTime today = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
-		return today.format(formatter);
+		return today.format(FORMATTER);
 	}
 
 	/// Prevent instantiating this class of static methods.
