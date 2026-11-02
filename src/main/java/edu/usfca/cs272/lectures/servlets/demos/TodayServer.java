@@ -16,28 +16,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * A simple example of using Jetty and servlets to create a dynamic web page.
- * The web page will display the current date/time when loaded.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @version Spring 2025
- */
+/// A simple example of using Jetty and servlets to create a dynamic web page.
+/// The web page will display the current date/time when loaded.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @version Fall 2026
 public class TodayServer {
-	/** The hard-coded port to run this server. */
+	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/**
-	 * The logger to use (Jetty is configured via the pom.xml to use Log4j2 as well)
-	 */
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2 as well)
 	public static Logger log = LogManager.getLogger();
 
-	/**
-	 * Sets up a Jetty server with explicit connector and handler components.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start web server
-	 */
+	/// Sets up a Jetty server with explicit connector and handler components.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start web server
 	public static void main(String[] args) throws Exception {
 		// Create the Jetty server
 		Server server = new Server();
@@ -64,17 +58,15 @@ public class TodayServer {
 		server.join();
 	}
 
-	/**
-	 * A simple servlet that will display the current date and time when loaded.
-	 */
+	/// A simple servlet that will display the current date and time when loaded.
 	public static class TodayServlet extends HttpServlet {
-		/** Class version for serialization, in [YEAR][TERM] format (unused). */
-		private static final long serialVersionUID = 202501;
+		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
+		private static final long serialVersionUID = 202608;
 
-		/** Title of web page. */
+		/// Title of web page.
 		private static final String TITLE = "Today";
 
-		/** Creates a new instance of this class. */
+		/// Creates a new instance of this class.
 		public TodayServlet() {}
 
 		@Override
@@ -106,12 +98,10 @@ public class TodayServer {
 		}
 	}
 
-	/**
-	 * Returns the date and time in a long format. For example: "12:00 am on
-	 * Saturday, January 01 2000".
-	 *
-	 * @return current date and time
-	 */
+	/// Returns the date and time in a long format. For example: "12:00 am on
+	/// Saturday, January 01 2000".
+	///
+	/// @return current date and time
 	public static String getDate() {
 		String format = "hh:mm:ss a 'on' EEEE, MMMM dd yyyy";
 		LocalDateTime today = LocalDateTime.now();
@@ -119,7 +109,7 @@ public class TodayServer {
 		return today.format(formatter);
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private TodayServer() {
 	}
 }
