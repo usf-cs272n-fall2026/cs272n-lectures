@@ -35,6 +35,7 @@ public class SimpleFileServer {
 
 		// Add static resource holders to web server
 		// This indicates where web files are accessible on the file system
+		// https://jetty.org/docs/jetty/12.1/programming-guide/server/http.html#handler-use-resource
 		ResourceHandler resourceHandler = new ResourceHandler();
 		resourceHandler.setDirAllowed(true);
 
@@ -46,6 +47,7 @@ public class SimpleFileServer {
 		// Can still assign servlets to specific requests
 		ServletContextHandler servletHandler = new ServletContextHandler();
 		servletHandler.addServlet(VisitServer.VisitServlet.class, "/visits");
+		servletHandler.addServlet(TodayServer.TodayServlet.class, "/today");
 
 		// Setup handlers (and handler order)
 		List<Handler> handlers = List.of(resourceHandler, servletHandler);
