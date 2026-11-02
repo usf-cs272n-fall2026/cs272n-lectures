@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee11.servlet.ServletContextHandler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 
@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /// The web page will display the current date/time when loaded.
 ///
 /// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
 /// @version Fall 2026
 public class TodayServer {
 	/// The hard-coded port to run this server.
