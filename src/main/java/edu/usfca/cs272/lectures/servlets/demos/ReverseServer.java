@@ -14,28 +14,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-/**
- * A simple example of using Jetty and servlets to use an HTML form.
- *
- * @author CS 272 Software Development (University of San Francisco)
- * @author Claude Opus 5.5 (Anthropic)
- * @version Fall 2026
- */
+/// A simple example of using Jetty and servlets to use an HTML form.
+///
+/// @author CS 272 Software Development (University of San Francisco)
+/// @author Claude Opus 5.5 (Anthropic)
+/// @version Fall 2026
 public class ReverseServer {
-	/** The hard-coded port to run this server. */
+	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/**
-	 * The logger to use (Jetty is configured via the pom.xml to use Log4j2)
-	 */
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2)
 	public static Logger log = LogManager.getLogger();
 
-	/**
-	 * Sets up a Jetty server configured to use the servlets defined in this class.
-	 *
-	 * @param args unused
-	 * @throws Exception if unable to start web server
-	 */
+	/// Sets up a Jetty server configured to use the servlets defined in this
+	/// class.
+	///
+	/// @param args unused
+	/// @throws Exception if unable to start web server
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(PORT);
 
@@ -50,17 +45,15 @@ public class ReverseServer {
 		server.join();
 	}
 
-	/**
-	 * Outputs and responds to HTML form.
-	 */
+	/// Outputs and responds to HTML form.
 	public static class ReverseGetServlet extends HttpServlet {
-		/** Class version for serialization, in [YEAR][TERM] format (unused). */
+		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
 
-		/** The title to use for this webpage. */
+		/// The title to use for this webpage.
 		private static final String TITLE = "Reverse";
 
-		/** Creates a new instance of this class. */
+		/// Creates a new instance of this class.
 		public ReverseGetServlet() {}
 
 		@Override
@@ -129,17 +122,15 @@ public class ReverseServer {
 		 */
 	}
 
-	/**
-	 * Outputs and responds to HTML form.
-	 */
+	/// Outputs and responds to HTML form.
 	public static class ReversePostServlet extends HttpServlet {
-		/** Class version for serialization, in [YEAR][TERM] format (unused). */
+		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
 
-		/** The title to use for this webpage. */
+		/// The title to use for this webpage.
 		private static final String TITLE = "Reverse";
 
-		/** Creates a new instance of this class. */
+		/// Creates a new instance of this class.
 		public ReversePostServlet() {}
 
 		@Override
@@ -234,7 +225,7 @@ public class ReverseServer {
 		 */
 	}
 
-	/** Prevent instantiating this class of static methods. */
+	/// Prevent instantiating this class of static methods.
 	private ReverseServer() {
 	}
 }
