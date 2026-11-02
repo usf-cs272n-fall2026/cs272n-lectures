@@ -23,7 +23,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /// Demonstrates one way to serve both dynamic and static resources. Requires a
-/// local `web/foto` directory with several jpg images to function properly.
+/// local `src/main/resources/foto` directory with several jpg images.
 ///
 /// @author CS 272 Software Development (University of San Francisco)
 /// @author Claude Opus 5.5 (Anthropic)
@@ -32,8 +32,7 @@ public class GalleryServer {
 	/// The hard-coded port to run this server.
 	public static final int PORT = 8080;
 
-	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2
-	/// as well)
+	/// The logger to use (Jetty is configured via the `pom.xml` to use Log4j2)
 	public static Logger log = LogManager.getLogger();
 
 	/// Location of file resources.
@@ -42,8 +41,8 @@ public class GalleryServer {
 	/// Location of photos.
 	public static final Path foto = base.resolve("foto");
 
-	/// Sets up a Jetty server with a resource, context, and servlet context
-	/// handler to respond to requests for both dynamic and static resources.
+	/// Sets up a Jetty server with a resource, context, and servlet context handler
+	/// to respond to requests for both dynamic and static resources.
 	///
 	/// @param args unused
 	/// @throws Exception if unable to start and run server
@@ -84,8 +83,8 @@ public class GalleryServer {
 		// http://localhost:8080/images
 	}
 
-	/// Automatically adds all of the images found in the `web/foto`
-	/// subdirectory to a gallery page.
+	/// Automatically adds all of the images found in the `foto` subdirectory to a
+	/// gallery page.
 	public static class GalleryServlet extends HttpServlet {
 		/// Class version for serialization, in `[YEAR][TERM]` format (unused).
 		private static final long serialVersionUID = 202608;
@@ -144,6 +143,5 @@ public class GalleryServer {
 	}
 
 	/// Prevent instantiating this class of static methods.
-	private GalleryServer() {
-	}
+	private GalleryServer() {}
 }
