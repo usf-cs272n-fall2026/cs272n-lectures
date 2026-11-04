@@ -1,5 +1,7 @@
 package edu.usfca.cs272.lectures.servlets.adventure;
 
+import java.util.Arrays;
+
 /// Represents the four cardinal directions. Points between the cardinal
 /// directions form the points of the compass.
 ///
@@ -18,4 +20,16 @@ public enum Direction {
 
 	/// South cardinal direction.
 	SOUTH;
+
+	/// Demonstrates simple enum types.
+	///
+	/// @param args unused
+	public static void main(String[] args) {
+		Direction direction = Direction.NORTH;
+
+		System.out.println(direction.name());
+		System.out.println(direction.ordinal());
+
+		System.out.println(Arrays.toString(Direction.values()));
+	}
 }
